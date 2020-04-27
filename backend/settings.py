@@ -13,7 +13,7 @@ SECRET_KEY = '@41s&#%c$6^1+sr^mzz2l9q=5$&f255gzxwra3xk)-pkbq1xpl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['64.225.126.128', 'localhost']
 
 
 # Application definition
@@ -116,6 +116,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': (
@@ -134,5 +135,6 @@ REST_FRAMEWORK = {
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:8080",
     "http://127.0.0.1:9000",
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "http://192.168.33.97:3000"
 ]
