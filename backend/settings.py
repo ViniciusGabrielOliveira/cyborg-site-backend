@@ -13,7 +13,7 @@ SECRET_KEY = '@41s&#%c$6^1+sr^mzz2l9q=5$&f255gzxwra3xk)-pkbq1xpl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://cyborg-front.herokuapp.com/"]
 
 
 # Application definition
@@ -131,8 +131,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:8080",
-    "http://127.0.0.1:9000",
-    "http://localhost:3000"
-]
+CORS_ORIGIN_WHITELIST = ["https://cyborg-front.herokuapp.com/"]
