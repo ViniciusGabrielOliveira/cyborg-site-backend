@@ -133,3 +133,6 @@ REST_FRAMEWORK = {
 }
 
 CORS_ORIGIN_WHITELIST = ["http://localhost:8080", "https://cyborg-front.herokuapp.com"]
+
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
