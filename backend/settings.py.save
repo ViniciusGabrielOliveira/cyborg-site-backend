@@ -11,9 +11,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '@41s&#%c$6^1+sr^mzz2l9q=5$&f255gzxwra3xk)-pkbq1xpl'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["64.225.126.128", "http://159.65.47.128:3000"]
+ALLOWED_HOSTS = ["http://64.225.126.128", "http://159.65.47.128:3000", "http://159.65.47.128"]
 
 
 # Application definition
@@ -132,4 +132,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
 
-CORS_ORIGIN_WHITELIST = ["http://localhost:8080", "http://159.65.47.128:3000"]
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = ["https://localhost:8080", "https://cyborg-front.herokuapp.com"]
+#settings para conectar com https do heroku
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
