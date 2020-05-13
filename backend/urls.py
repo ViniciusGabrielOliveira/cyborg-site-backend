@@ -4,7 +4,7 @@ from rest_framework import routers
 
 from noticias import views
 
-router = routers.DefaultRouter(trailing_slash=True)
+router = routers.DefaultRouter()
 router.register(r'noticias', views.NoticiaViewSet)
 
 
