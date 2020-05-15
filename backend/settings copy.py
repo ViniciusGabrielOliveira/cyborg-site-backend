@@ -13,7 +13,7 @@ SECRET_KEY = '@41s&#%c$6^1+sr^mzz2l9q=5$&f255gzxwra3xk)-pkbq1xpl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "64.225.126.128", "http://159.65.47.128:3000"]
+ALLOWED_HOSTS = ["64.225.126.128", "http://159.65.47.128:3000"]
 
 
 # Application definition
@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'rest_auth',
     'corsheaders',
     'noticias.apps.NoticiasConfig',
-    'core.apps.CoreConfig'
 ]
 
 MIDDLEWARE = [
@@ -120,19 +119,17 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticated',
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'COERCE_DECIMAL_TO_STRING': False,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
 
-JWT_AUTH  = {
-    'JWT_RESPONSE_PAYLOAD_HANDLER' : 'backend.utils.my_jwt_response_handler'
-}
-
-
-CORS_ORIGIN_WHITELIST = ["http://127.0.0.1:8000","http://localhost:3000","http://159.65.47.128:3000"]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000","http://159.65.47.128:3000"]
