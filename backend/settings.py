@@ -132,4 +132,4 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
 }
 
-CORS_ORIGIN_WHITELIST = ["http://localhost:8080", "http://159.65.47.128:3000"]
+CORS_ORIGIN_WHITELIST = ["http://localhost:3000","http://159.65.47.128:3000"]
