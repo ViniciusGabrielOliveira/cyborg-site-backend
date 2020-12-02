@@ -14,16 +14,14 @@ from noticias.permissions import IsAdminUser, IsLoggedInUserOrAdmin
 
 
 class NoticiaViewSet(viewsets.ModelViewSet):
-    queryset = Noticia.objects.all()
+    queryset = Noticia.objects.all().order_by('-classification')
     serializer_class = NoticiaSerializer
 
     def get_permissions(self):
         permission_classes = []
-        if self.action == 'list':
+        if self.request.method == 'GET':
             permission_classes = [AllowAny]
-        elif self.action == 'retrieve' or self.action == 'update' or self.action == 'partial_update' or self.action == 'create':
-            permission_classes = [IsLoggedInUserOrAdmin]
-        elif self.action == 'destroy':
+        elif self.request.method == 'POST' or self.request.method == 'PUT' or self.request.method == 'PATCH' or self.request.method == 'HEAD' or self.request.method == 'OPTIONS' or self.request.method == 'DELETE':
             permission_classes = [IsAdminUser]
         return [permission() for permission in permission_classes]
 
@@ -32,3 +30,11 @@ class DetalheList(generics.ListAPIView):
     serializer_class = NoticiaSerializer
     filter_backends = [filters.SearchFilter]
     search_fields = ['$tags', '$title']
+
+    def get_permissions(self):
+        permission_classes = []
+        if self.request.method == 'GET':
+            permission_classes = [AllowAny]
+        elif self.request.method == 'POST' or self.request.method == 'PUT' or self.request.method == 'PATCH' or self.request.method == 'HEAD' or self.request.method == 'OPTIONS' or self.request.method == 'DELETE':
+            permission_classes = [IsAdminUser]
+        return [permission() for permission in permission_classes]
